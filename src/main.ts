@@ -52,7 +52,7 @@ async function bootstrap() {
     customSiteTitle: 'CUL Transport API Swagger Documentation',
   });
 
-  await app.listen(process.env.APP_PORT);
+  await app.listen(process.env.APP_PORT, '0.0.0.0');
 }
 
 bootstrap();
