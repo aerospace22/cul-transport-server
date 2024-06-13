@@ -6,7 +6,7 @@ export class UpdateBusConductorDto implements Partial<BusConductor> {
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  fullName: string;
+  fullname: string;
 
   @ApiProperty()
   @IsNotEmpty()
