@@ -101,11 +101,11 @@ model BusRoute {
   routeFromPin                     String?
   routeTo                          String
   routeToPin                       String?
-  departureDate                    DateTime
+  departureDate                    String
   departureTime                    String
-  arrivalDate                      DateTime
+  arrivalDate                      String
   arrivalTime                      String
-  status                           String                             @default("pending")
+  status                           String                             @default("draft")
   createdAt                        DateTime                           @default(now())
   updatedAt                        DateTime                           @updatedAt
   bus                              Bus                                @relation(references: [id], fields: [busId], onDelete: Cascade)

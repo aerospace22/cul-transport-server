@@ -44,6 +44,7 @@ async function bootstrap() {
     .addTag('Bus Drivers API', 'Bus drivers management')
     .addTag('Bus Conductors API', 'Bus conductors management')
     .addTag('Busses API', 'Busses management')
+    .addTag('Bus Routes API', 'Bus Routes management')
 
     .build();
   const swaggerDocument = SwaggerModule.createDocument(app, swaggerConfig);

@@ -8,6 +8,7 @@ import { AuthModule } from '@/modules/auth/auth.module';
 import { BusDriverModule } from '@/modules/bus-drivers/bus-driver.module';
 import { BusConductorModule } from '@/modules/bus-conductors/bus-conductor.module';
 import { BusModule } from '@/modules/bus/bus.module';
+import { BusRoutesModule } from '@/modules/bus-routes/bus-routes.module';
 
 const configService: ConfigService = new ConfigService();
 
@@ -35,6 +36,7 @@ const mailerModuleOpts = {
     BusDriverModule,
     BusConductorModule,
     BusModule,
+    BusRoutesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

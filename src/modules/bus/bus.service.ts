@@ -8,21 +8,17 @@ export class BusService {
   constructor(private readonly prismaService: PrismaService) {}
 
   async create(createBusDto: CreateBusDto) {
-    try {
-      await this.prismaService.bus.create({
-        data: {
-          ...createBusDto,
-          busDriverId: +createBusDto.busDriverId,
-          busConductorId: +createBusDto.busConductorId,
-        },
-        include: {
-          busDriver: true,
-          busConductor: true,
-        },
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    return await this.prismaService.bus.create({
+      data: {
+        ...createBusDto,
+        busDriverId: +createBusDto.busDriverId,
+        busConductorId: +createBusDto.busConductorId,
+      },
+      include: {
+        busDriver: true,
+        busConductor: true,
+      },
+    });
   }
 
   async findAll() {
