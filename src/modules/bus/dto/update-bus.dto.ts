@@ -16,7 +16,7 @@ export class UpdateBusDto implements Partial<Bus> {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  code: string;
+  busNo: string;
 
   @ApiProperty()
   @IsString()

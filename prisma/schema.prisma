@@ -9,7 +9,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgres"
   url      = env("DATABASE_URL")
 }
 
@@ -59,7 +59,7 @@ model BusDriver {
   contactNo String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  bus       Bus?
+  bus       Bus[]
 }
 
 model BusConductor {
@@ -69,23 +69,23 @@ model BusConductor {
   contactNo String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  bus       Bus?
+  bus       Bus[]
 }
 
 model Bus {
   // HasOne BusDriver
   // HasOne BusConductor
   // HasMany BusRoutes
-  id             Int           @id @default(autoincrement())
-  busDriverId    Int?          @unique
-  busConductorId Int?          @unique
-  busNo          String        @unique
+  id             Int          @id @default(autoincrement())
+  busDriverId    Int
+  busConductorId Int
+  busNo          String       @unique
   plateNo        String
   type           String
-  createdAt      DateTime      @default(now())
-  updatedAt      DateTime      @updatedAt
-  busDriver      BusDriver?    @relation(references: [id], fields: [busDriverId], onDelete: SetNull)
-  busConductor   BusConductor? @relation(references: [id], fields: [busConductorId], onDelete: SetNull)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  busDriver      BusDriver    @relation(references: [id], fields: [busDriverId], onDelete: Restrict)
+  busConductor   BusConductor @relation(references: [id], fields: [busConductorId], onDelete: Restrict)
   busRoutes      BusRoute[]
 }
 

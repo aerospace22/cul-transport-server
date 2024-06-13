@@ -1,22 +1,22 @@
-import { IsString, IsNumber, IsNotEmpty, IsOptional } from 'class-validator';
+import { IsString, IsNumber, IsNotEmpty } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { Bus } from '@prisma/client';
 
 export class CreateBusDto implements Partial<Bus> {
   @ApiProperty()
   @IsNumber()
-  @IsOptional()
-  busDriverId?: number;
+  @IsNotEmpty()
+  busDriverId: number;
 
   @ApiProperty()
   @IsNumber()
-  @IsOptional()
-  busConductorId?: number;
+  @IsNotEmpty()
+  busConductorId: number;
 
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  code: string;
+  busNo: string;
 
   @ApiProperty()
   @IsString()
