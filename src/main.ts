@@ -19,7 +19,11 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.use(compression());
   app.enableCors({
-    origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+    origin: [
+      'http://localhost:5173',
+      'http://127.0.0.1:5173',
+      'https://cul-transport-dashboard.vercel.app/',
+    ],
   });
   app.use(helmet({ contentSecurityPolicy: true }));
 
