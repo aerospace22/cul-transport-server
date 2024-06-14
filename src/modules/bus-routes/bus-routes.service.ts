@@ -7,10 +7,30 @@ import { UpdateBusRouteDto } from './dto/update-bus-routes.dto';
 export class BusRoutesService {
   constructor(private readonly prismaService: PrismaService) {}
 
+  generateUniqueRandomString(length: number = 12) {
+    const chars =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    const charactersLength = chars.length;
+
+    // Add random characters to the string
+    for (let i = 0; i < length; i++) {
+      result += chars.charAt(Math.floor(Math.random() * charactersLength));
+    }
+
+    // Ensure uniqueness by appending the current timestamp
+    result += Date.now().toString(36); // Convert timestamp to a base-36 string
+
+    return result;
+  }
+
   async create(createBusRouteDto: CreateBusRouteDto) {
+    const routeNo = this.generateUniqueRandomString(16);
+
     return await this.prismaService.busRoute.create({
       // @ts-ignore
       data: {
+        routeNo,
         ...createBusRouteDto,
       },
     });
