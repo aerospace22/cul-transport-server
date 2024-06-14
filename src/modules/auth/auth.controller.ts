@@ -16,7 +16,7 @@ export class AuthController {
     status: 200,
     description: 'Authenticate credentials success',
   })
-  @Post('/admin/login')
+  @Post('/login')
   async adminLoginHandler(
     @Body() payload: LoginDTO,
     @Res() response: Response,
