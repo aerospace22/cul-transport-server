@@ -39,7 +39,12 @@ export class BusRoutesService {
   async findAll() {
     return await this.prismaService.busRoute.findMany({
       include: {
-        bus: true,
+        bus: {
+          include: {
+            busConductor: true,
+            busDriver: true,
+          },
+        },
         busRouteTickets: true,
         busRouteTicketBookings: true,
         busRouteTicketBookingTransaction: true,
