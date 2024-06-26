@@ -9,4 +9,9 @@ export class AppController {
   systemHealthcheckHandler(): string {
     return this.appService.healthcheckHandler();
   }
+
+  @Get('dashboard-stats')
+  dashboardStatisticsHandler() {
+    return this.appService.getDashboardStatistics();
+  }
 }
