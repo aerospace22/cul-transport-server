@@ -5,8 +5,8 @@ import { ConfigService } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from '@/modules/auth/auth.module';
-import { BusDriverModule } from '@/modules/bus-drivers/bus-driver.module';
-import { BusConductorModule } from '@/modules/bus-conductors/bus-conductor.module';
+import { BusDriversModule } from '@/modules/bus-drivers/bus-drivers.module';
+import { BusConductorsModule } from '@/modules/bus-conductors/bus-conductors.module';
 import { BusModule } from '@/modules/bus/bus.module';
 import { BusRoutesModule } from '@/modules/bus-routes/bus-routes.module';
 import { BusRouteTicketsModule } from '@/modules/bus-route-tickets/bus-route-tickets.module';
@@ -34,8 +34,8 @@ const mailerModuleOpts = {
     ConfigModule.forRoot(configModuleOpts),
     MailerModule.forRoot(mailerModuleOpts),
     AuthModule,
-    BusDriverModule,
-    BusConductorModule,
+    BusDriversModule,
+    BusConductorsModule,
     BusModule,
     BusRoutesModule,
     BusRouteTicketsModule,

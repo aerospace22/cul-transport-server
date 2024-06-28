@@ -7,4 +7,4 @@ import { BusConductorsController } from './bus-conductors.controller';
   controllers: [BusConductorsController],
   providers: [BusConductorsService, PrismaService],
 })
-export class BusConductorModule {}
+export class BusConductorsModule {}
