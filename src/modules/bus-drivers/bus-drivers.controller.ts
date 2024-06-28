@@ -8,7 +8,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
-import { BusDriverService } from './bus-driver.service';
+import { BusDriversService } from './bus-drivers.service';
 import { CreateBusDriverDto } from './dto/create-bus-driver.dto';
 import { UpdateBusDriverDto } from './dto/update-bus-driver.dto';
 
@@ -17,8 +17,8 @@ import { UpdateBusDriverDto } from './dto/update-bus-driver.dto';
   path: 'bus-drivers',
   version: '1',
 })
-export class BusDriverController {
-  constructor(private readonly busDriverService: BusDriverService) {}
+export class BusDriversController {
+  constructor(private readonly busDriversService: BusDriversService) {}
 
   @ApiResponse({
     status: 201,
@@ -26,7 +26,7 @@ export class BusDriverController {
   })
   @Post('/')
   create(@Body() createBusDriverDto: CreateBusDriverDto) {
-    return this.busDriverService.create(createBusDriverDto);
+    return this.busDriversService.create(createBusDriverDto);
   }
 
   @ApiResponse({
@@ -35,7 +35,7 @@ export class BusDriverController {
   })
   @Get('/')
   findAll() {
-    return this.busDriverService.findAll();
+    return this.busDriversService.findAll();
   }
 
   @ApiResponse({
@@ -44,7 +44,7 @@ export class BusDriverController {
   })
   @Get('/:id')
   findOne(@Param('id') id: string) {
-    return this.busDriverService.findOne(+id);
+    return this.busDriversService.findOne(+id);
   }
 
   @ApiResponse({
@@ -56,7 +56,7 @@ export class BusDriverController {
     @Param('id') id: string,
     @Body() updateBusDriverDto: UpdateBusDriverDto,
   ) {
-    return this.busDriverService.update(+id, updateBusDriverDto);
+    return this.busDriversService.update(+id, updateBusDriverDto);
   }
 
   @ApiResponse({
@@ -65,6 +65,6 @@ export class BusDriverController {
   })
   @Delete('/:id')
   remove(@Param('id') id: string) {
-    return this.busDriverService.remove(+id);
+    return this.busDriversService.remove(+id);
   }
 }

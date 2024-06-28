@@ -8,7 +8,7 @@ import { CreateBusDriverDto } from './dto/create-bus-driver.dto';
 import { UpdateBusDriverDto } from './dto/update-bus-driver.dto';
 
 @Injectable()
-export class BusDriverService {
+export class BusDriversService {
   constructor(private readonly prismaService: PrismaService) {}
 
   async create(createBusDriverDto: CreateBusDriverDto) {

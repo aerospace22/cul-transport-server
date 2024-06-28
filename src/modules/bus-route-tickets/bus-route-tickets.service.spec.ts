@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { BusDriverService } from './bus-driver.service';
+import { BusDriverService } from './bus-route-tickets.service';
 
 describe('BusDriverService', () => {
   let service: BusDriverService;

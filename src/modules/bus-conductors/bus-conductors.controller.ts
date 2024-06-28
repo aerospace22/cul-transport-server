@@ -8,7 +8,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
-import { BusConductorService } from './bus-conductor.service';
+import { BusConductorsService } from './bus-conductors.service';
 import { CreateBusConductorDto } from './dto/create-bus-conductor.dto';
 import { UpdateBusConductorDto } from './dto/update-bus-conductor.dto';
 
@@ -17,8 +17,8 @@ import { UpdateBusConductorDto } from './dto/update-bus-conductor.dto';
   path: 'bus-conductors',
   version: '1',
 })
-export class BusConductorController {
-  constructor(private readonly busConductorService: BusConductorService) {}
+export class BusConductorsController {
+  constructor(private readonly busConductorsService: BusConductorsService) {}
 
   @ApiResponse({
     status: 201,
@@ -26,7 +26,7 @@ export class BusConductorController {
   })
   @Post('/')
   create(@Body() createBusConductorDto: CreateBusConductorDto) {
-    return this.busConductorService.create(createBusConductorDto);
+    return this.busConductorsService.create(createBusConductorDto);
   }
 
   @ApiResponse({
@@ -35,7 +35,7 @@ export class BusConductorController {
   })
   @Get('/')
   findAll() {
-    return this.busConductorService.findAll();
+    return this.busConductorsService.findAll();
   }
 
   @ApiResponse({
@@ -44,7 +44,7 @@ export class BusConductorController {
   })
   @Get('/:id')
   findOne(@Param('id') id: string) {
-    return this.busConductorService.findOne(+id);
+    return this.busConductorsService.findOne(+id);
   }
 
   @ApiResponse({
@@ -56,7 +56,7 @@ export class BusConductorController {
     @Param('id') id: string,
     @Body() updateBusConductorDto: UpdateBusConductorDto,
   ) {
-    return this.busConductorService.update(+id, updateBusConductorDto);
+    return this.busConductorsService.update(+id, updateBusConductorDto);
   }
 
   @ApiResponse({
@@ -65,6 +65,6 @@ export class BusConductorController {
   })
   @Delete('/:id')
   remove(@Param('id') id: string) {
-    return this.busConductorService.remove(+id);
+    return this.busConductorsService.remove(+id);
   }
 }

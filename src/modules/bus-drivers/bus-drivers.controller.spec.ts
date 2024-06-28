@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { BusDriverController } from './bus-driver.controller';
-import { BusDriverService } from './bus-driver.service';
+import { BusDriverController } from './bus-drivers.controller';
+import { BusDriverService } from './bus-drivers.service';
 
-describe('BusDriverController', () => {
-  let controller: BusDriverController;
+describe('BusDriversController', () => {
+  let controller: BusDriversController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({

@@ -13,13 +13,11 @@ export class BusRoutesService {
     let result = '';
     const charactersLength = chars.length;
 
-    // Add random characters to the string
     for (let i = 0; i < length; i++) {
       result += chars.charAt(Math.floor(Math.random() * charactersLength));
     }
 
-    // Ensure uniqueness by appending the current timestamp
-    result += Date.now().toString(36); // Convert timestamp to a base-36 string
+    result += Date.now().toString(36);
 
     return result;
   }
@@ -58,7 +56,7 @@ export class BusRoutesService {
     });
 
     if (!result) {
-      throw new NotFoundException('_NOT_FOUND');
+      throw new NotFoundException('BUSROUTE_NOT_FOUND');
     }
 
     return result;
