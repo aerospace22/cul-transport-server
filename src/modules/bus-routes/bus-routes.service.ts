@@ -36,6 +36,9 @@ export class BusRoutesService {
 
   async findAll() {
     return await this.prismaService.busRoute.findMany({
+      orderBy: {
+        id: 'desc',
+      },
       include: {
         bus: {
           include: {
