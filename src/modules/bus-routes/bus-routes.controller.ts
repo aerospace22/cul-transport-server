@@ -49,6 +49,15 @@ export class BusRoutesController {
 
   @ApiResponse({
     status: 200,
+    description: 'Get Bus by route number',
+  })
+  @Get('/route-no/:routeNo')
+  findOneByRouteNo(@Param('routeNo') routeNo: string) {
+    return this.busRoutesService.findOneByRouteNo(routeNo);
+  }
+
+  @ApiResponse({
+    status: 200,
     description: 'Update Bus',
   })
   @Patch('/:id')

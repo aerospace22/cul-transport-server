@@ -65,6 +65,18 @@ export class BusRoutesService {
     return result;
   }
 
+  async findOneByRouteNo(routeNo: string) {
+    const result = await this.prismaService.busRoute.findFirst({
+      where: { routeNo },
+    });
+
+    if (!result) {
+      throw new NotFoundException('BUSROUTE_NOT_FOUND');
+    }
+
+    return result;
+  }
+
   async update(id: number, updateBusRouteDto: UpdateBusRouteDto) {
     return await this.prismaService.busRoute.update({
       where: {
