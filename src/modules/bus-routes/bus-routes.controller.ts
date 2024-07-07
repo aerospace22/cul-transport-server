@@ -22,7 +22,7 @@ export class BusRoutesController {
 
   @ApiResponse({
     status: 201,
-    description: 'Created Bus',
+    description: 'Created BusRoute',
   })
   @Post('/')
   create(@Body() createBusRouteDto: CreateBusRouteDto) {
@@ -31,7 +31,7 @@ export class BusRoutesController {
 
   @ApiResponse({
     status: 200,
-    description: 'Get all Bus',
+    description: 'Get all BusRoute',
   })
   @Get('/')
   findAll() {
@@ -40,7 +40,7 @@ export class BusRoutesController {
 
   @ApiResponse({
     status: 200,
-    description: 'Get Bus',
+    description: 'Get BusRoute',
   })
   @Get('/:id')
   findOne(@Param('id') id: string) {
@@ -58,7 +58,7 @@ export class BusRoutesController {
 
   @ApiResponse({
     status: 200,
-    description: 'Update Bus',
+    description: 'Update BusRoute',
   })
   @Patch('/:id')
   update(
@@ -70,7 +70,7 @@ export class BusRoutesController {
 
   @ApiResponse({
     status: 204,
-    description: 'Delete Bus',
+    description: 'Delete BusRoute',
   })
   @Delete('/:id')
   remove(@Param('id') id: string) {
