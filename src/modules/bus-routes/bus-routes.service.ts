@@ -68,6 +68,17 @@ export class BusRoutesService {
   async findOneByRouteNo(routeNo: string) {
     const result = await this.prismaService.busRoute.findFirst({
       where: { routeNo },
+      include: {
+        bus: {
+          include: {
+            busConductor: true,
+            busDriver: true,
+          },
+        },
+        busRouteTickets: true,
+        busRouteTicketBookings: true,
+        busRouteTicketBookingTransaction: true,
+      },
     });
 
     if (!result) {
