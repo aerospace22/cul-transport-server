@@ -12,27 +12,31 @@ export class BusRouteTicketBookingTransactionsService {
   async create(
     createBusRouteTicketBookingTransaction: CreateBusRouteTicketBookingTransactionDto,
   ) {
-    const ticket = await this.prismaService.busRouteTicket.findUnique({
-      where: { id: createBusRouteTicketBookingTransaction.busRouteTicketId },
-    });
+    try {
+      const ticket = await this.prismaService.busRouteTicket.findUnique({
+        where: { id: createBusRouteTicketBookingTransaction.busRouteTicketId },
+      });
 
-    // prettier-ignore
-    const subtotal = +createBusRouteTicketBookingTransaction.ticketQuantity * ticket.price;
-    const updatedTicket = await this.prismaService.busRouteTicket.update({
-      where: { id: createBusRouteTicketBookingTransaction.busRouteTicketId },
-      data: {
-        quantity:
-          +ticket.quantity -
-          +createBusRouteTicketBookingTransaction.ticketQuantity,
-      },
-    });
-    const paymentData = await this.paymentsServce.createPaymentLink({
-      amount: Number(`${subtotal}00`),
-      description: `[BUS E-TICKET BOOKING PAYMENT]`,
-    });
+      // prettier-ignore
+      const subtotal = +createBusRouteTicketBookingTransaction.ticketQuantity * ticket.price;
+      const updatedTicket = await this.prismaService.busRouteTicket.update({
+        where: { id: createBusRouteTicketBookingTransaction.busRouteTicketId },
+        data: {
+          quantity:
+            +ticket.quantity -
+            +createBusRouteTicketBookingTransaction.ticketQuantity,
+        },
+      });
+      const paymentData = await this.paymentsServce.createPaymentLink({
+        amount: Number(`${subtotal}00`),
+        description: `[BUS E-TICKET BOOKING PAYMENT]`,
+      });
 
-    console.log({ paymentData, updatedTicket });
+      console.log({ paymentData, updatedTicket });
 
-    return { paymentData, updatedTicket };
+      return { paymentData, updatedTicket };
+    } catch (error: unknown) {
+      console.log(error);
+    }
   }
 }

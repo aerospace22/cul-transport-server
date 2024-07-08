@@ -21,7 +21,7 @@ export class PaymentsService {
     const formattedAmount: string = `${payload.amount.toFixed(2)}`;
 
     const link = await this.paymongo.links.create({
-      amount: formattedAmount,
+      amount: +formattedAmount,
       description: payload.description,
     });
 
