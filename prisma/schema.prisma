@@ -141,6 +141,7 @@ model BusRouteTicketBookingTransaction {
   userAccountName        String
   userAccountEmail       String
   userAccountContact     String
+  ticketQuantity         Int
   paymongoPaymentData    String                  @db.Text
   createdAt              DateTime                @default(now())
   updatedAt              DateTime                @updatedAt
@@ -156,7 +157,7 @@ model BusRouteTicketBooking {
   id                                 Int                              @id @default(autoincrement())
   busRouteId                         Int
   busRouteTicketBookingTransactionId Int
-  bookerAccountName                  String
+  isUsed                             Boolean                          @default(false)
   createdAt                          DateTime                         @default(now())
   updatedAt                          DateTime                         @updatedAt
   busRoute                           BusRoute                         @relation(references: [id], fields: [busRouteId], onDelete: Restrict)
