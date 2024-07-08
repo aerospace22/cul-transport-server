@@ -3,9 +3,9 @@ import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { BusRouteTicketBookingTransactionsService } from './bus-route-ticket-booking-transactions.service';
 import { CreateBusRouteTicketBookingTransactionDto } from './dto/create-bus-route-ticket-booking-transaction.dto';
 
-@ApiTags('Bus Route Tickets API')
+@ApiTags('Bus Route Ticket Booking Transactions API')
 @Controller({
-  path: 'bus-route-tickets',
+  path: 'bus-route-ticket-booking-transactions',
   version: '1',
 })
 export class BusRouteTicketBookingTransactionController {

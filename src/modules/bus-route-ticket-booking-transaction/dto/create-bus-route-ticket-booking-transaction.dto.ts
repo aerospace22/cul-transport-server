@@ -14,6 +14,12 @@ export class CreateBusRouteTicketBookingTransactionDto implements Partial<BusRou
   @IsNumber()
   busRouteTicketId: number;
 
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsNumber()
+  ticketQuantity: number;
+
   @ApiProperty()
   @IsOptional()
   @IsNumber()

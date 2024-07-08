@@ -10,6 +10,7 @@ import { BusConductorsModule } from '@/modules/bus-conductors/bus-conductors.mod
 import { BusModule } from '@/modules/bus/bus.module';
 import { BusRoutesModule } from '@/modules/bus-routes/bus-routes.module';
 import { BusRouteTicketsModule } from '@/modules/bus-route-tickets/bus-route-tickets.module';
+import { BusRouteTicketBookingTransactionsModule } from '@/modules/bus-route-ticket-booking-transaction/bus-route-ticket-booking-transactions.module';
 
 const configService: ConfigService = new ConfigService();
 
@@ -39,6 +40,7 @@ const mailerModuleOpts = {
     BusModule,
     BusRoutesModule,
     BusRouteTicketsModule,
+    BusRouteTicketBookingTransactionsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
