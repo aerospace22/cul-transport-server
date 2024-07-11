@@ -138,9 +138,6 @@ model BusRouteTicketBookingTransaction {
   busRouteId             Int
   busRouteTicketId       Int                     @unique
   userId                 Int?
-  userAccountName        String
-  userAccountEmail       String
-  userAccountContact     String
   ticketQuantity         Int
   paymongoPaymentData    String                  @db.Text
   createdAt              DateTime                @default(now())

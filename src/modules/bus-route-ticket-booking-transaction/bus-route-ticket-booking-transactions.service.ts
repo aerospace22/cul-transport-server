@@ -9,6 +9,14 @@ export class BusRouteTicketBookingTransactionsService {
     private readonly paymentsServce: PaymentsService,
   ) {}
 
+  async getForUser(userId: number) {
+    return await this.prismaService.busRouteTicketBookingTransaction.findMany({
+      where: {
+        userId,
+      },
+    });
+  }
+
   async create(
     createBusRouteTicketBookingTransaction: CreateBusRouteTicketBookingTransactionDto,
   ) {
@@ -32,9 +40,19 @@ export class BusRouteTicketBookingTransactionsService {
         description: `[BUS E-TICKET BOOKING PAYMENT]`,
       });
 
-      console.log({ paymentData, updatedTicket });
+      // prettier-ignore
+      const bookingTransaction = await this.prismaService.busRouteTicketBookingTransaction.create({
+          // @ts-ignore
+          data: {
+            busRouteId: +createBusRouteTicketBookingTransaction.busRouteId,
+            busRouteTicketId: +createBusRouteTicketBookingTransaction.busRouteTicketId,
+            ticketQuantity: createBusRouteTicketBookingTransaction.ticketQuantity,
+            userId: createBusRouteTicketBookingTransaction.userId,
+            paymongoPaymentData: JSON.stringify(paymentData)
+          },
+        });
 
-      return { paymentData, updatedTicket };
+      return { bookingTransaction, updatedTicket };
     } catch (error: unknown) {
       console.log(error);
     }

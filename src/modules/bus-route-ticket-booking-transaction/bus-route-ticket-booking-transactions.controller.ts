@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Param } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { BusRouteTicketBookingTransactionsService } from './bus-route-ticket-booking-transactions.service';
 import { CreateBusRouteTicketBookingTransactionDto } from './dto/create-bus-route-ticket-booking-transaction.dto';
@@ -12,6 +12,15 @@ export class BusRouteTicketBookingTransactionController {
   constructor(
     private readonly busRouteTicketBookingTransactionsService: BusRouteTicketBookingTransactionsService,
   ) {}
+
+  @ApiResponse({
+    status: 201,
+    description: 'Get list of BusRouteTicketBookingTransaction for user',
+  })
+  @Post('/by-user/:userId')
+  getForUser(@Param('userId') userId: number) {
+    return this.busRouteTicketBookingTransactionsService.getForUser(userId);
+  }
 
   @ApiResponse({
     status: 201,
