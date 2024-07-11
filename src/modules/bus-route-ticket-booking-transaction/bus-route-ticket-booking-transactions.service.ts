@@ -57,7 +57,11 @@ export class BusRouteTicketBookingTransactionsService {
           },
         });
 
-      return { bookingTransaction, updatedTicket };
+      return {
+        bookingTransaction,
+        updatedTicket,
+        checkout_url: paymentData.checkout_url,
+      };
     } catch (error: unknown) {
       console.log(error);
     }
