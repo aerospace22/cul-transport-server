@@ -14,6 +14,11 @@ export class BusRouteTicketBookingTransactionsService {
       where: {
         userId,
       },
+      include: {
+        user: true,
+        busRouteTicket: true,
+        busRoute: true,
+      },
     });
   }
 

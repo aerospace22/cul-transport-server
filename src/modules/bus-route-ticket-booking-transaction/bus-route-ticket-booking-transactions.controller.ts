@@ -14,7 +14,7 @@ export class BusRouteTicketBookingTransactionController {
   ) {}
 
   @ApiResponse({
-    status: 201,
+    status: 200,
     description: 'Get list of BusRouteTicketBookingTransaction for user',
   })
   @Post('/by-user/:userId')
