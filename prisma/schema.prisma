@@ -136,7 +136,7 @@ model BusRouteTicketBookingTransaction {
   // HasMany BusRouteTicketBooking (1 booking (per ticket in transaction))
   id                     Int                     @id @default(autoincrement())
   busRouteId             Int
-  busRouteTicketId       Int                     @unique
+  busRouteTicketId       Int
   userId                 Int?
   ticketQuantity         Int
   paymongoPaymentData    String                  @db.Text
